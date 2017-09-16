@@ -1,0 +1,32 @@
+<div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="margin-top: 50px">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h1 >Sign In</h1>
+      </div>
+      <div class="modal-body">
+
+        <div class="input-group">
+          <div class="input-group-addon">
+            <i class="fa fa-user"></i>
+          </div>
+          <input [(ngModel)]="username"  type="text" class="form-control" name="username" placeholder="Username">
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-addon">
+            <i class="fa fa-key"></i>
+          </div>
+          <input [(ngModel)]="password"  type="password" class="form-control" name="password" placeholder="Password">
+        </div>
+
+        <div style="text-align: center;">
+          <button class="btn btn-primary" (click)="login()">登录</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div *ngIf="tabflag===0"  class="tabcontent">
+    <h3>LightHouse</h3>
+    <p class="poems">Over by the lighthouse
+      is where you'll find me</p>
+</div>
+
+<div *ngIf="tabflag===1"  class="tabcontent">
+    <h3>Lab</h3>
+    <p class="poems">Life is like the ocean, only strong-willed people who can reach the other side</p>
+</div>
+
+<div *ngIf="tabflag===2"  class="tabcontent">
+    <h3>Music</h3>
+    <p class="poems" >`</p>
+</div>
+
+<div *ngIf="tabflag===3"  class="tabcontent">
+    <h3>MessageBoard</h3>
+    <p class="poems">Everyone is an island</p>
+</div>
+
+<button class="tablink" (click)="clickTab(0)">Homepage</button>
+<button class="tablink" (click)="clickTab(1)">Lab</button>
+<button class="tablink" (click)="clickTab(2)">Music</button>
+<button class="tablink" (click)="clickTab(3)">MessageBoard</button>
+

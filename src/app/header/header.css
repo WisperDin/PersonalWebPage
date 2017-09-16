@@ -1,0 +1,46 @@
+/* Style the tab buttons */
+.tablink {
+    background-color: #eee;
+    color: #000000;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+    border-radius: 0;
+}
+
+/* Change background color of buttons on hover */
+.tablink:hover {
+    background-color: #B2DFDB;
+}
+
+/* Set default styles for tab content */
+.tabcontent {
+    background-image: url('../../assets/background.jpg');
+    background-repeat:no-repeat;
+    background-position:center;
+    color: white;
+    padding: 50px;
+    background-color: #96cdba;
+}
+
+.poems {
+  font-family: "Palatino Linotype","Book Antiqua",Palatino,serif;
+  font-size: 16px;
+  line-height: 140%;
+  font-weight: normal;
+  font-style: italic;
+
+}
+
+
+
+/*!* Style each tab content individually *!
+
+.London {background-color:red;}
+.Paris {background-color:green;}
+.Tokyo {background-color:blue;}
+.Oslo {background-color:orange;}*/
