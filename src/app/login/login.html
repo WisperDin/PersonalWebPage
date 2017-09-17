@@ -23,9 +23,15 @@
           <input [(ngModel)]="password"  type="password" class="form-control" name="password" placeholder="Password">
         </div>
 
-        <div style="text-align: center;">
+        <div style="text-align: center; margin-bottom: 15px">
           <button class="btn btn-primary" (click)="login()">登录</button>
         </div>
+
+        <div *ngFor="let alert of alerts">
+          <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" dismissible="true">{{ alert.msg }}</alert>
+        </div>
+
+
       </div>
     </div>
   </div>

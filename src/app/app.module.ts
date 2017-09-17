@@ -7,11 +7,14 @@ import {PageMain} from "./page-main/main-page";
 import {AppRoutingModule} from "./app-routing.module";
 
 import { ModalModule } from 'ngx-bootstrap/modal'
+import { AlertModule } from 'ngx-bootstrap/alert';
+
 import {FormsModule} from '@angular/forms'
 
 import {Login} from "./login/login";
 import {AuthGuard} from "./auth-guard";
 import {UserService} from "./_services/user.service";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -23,13 +26,15 @@ import {UserService} from "./_services/user.service";
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     AppRoutingModule,
     ModalModule.forRoot(),
+    AlertModule.forRoot()
 
   ],
   providers: [
     AuthGuard,
-    UserService
+    UserService,
   ],
   bootstrap: [AppComponent]
 })

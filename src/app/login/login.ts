@@ -22,10 +22,22 @@ export class Login {
   username:string;
   password:string;
 
+  loginFailed:boolean = false
+
   constructor(
     private userService:UserService
   ){
 
+  }
+
+  alerts: any = [];
+
+  failAlert(): void {
+    this.alerts.push({
+      type: 'danger',
+      msg: `Sign In Failed`,
+      timeout: 500
+    });
   }
 
   login(){
@@ -39,9 +51,15 @@ export class Login {
     }
     this.userService.login(this.username,this.password).subscribe(
       fb=>{
-
+        //todo 反馈
+        if(fb.code==1000){
+          //登录成功
+          this.hideModal();
+          return
+        }
+        this.failAlert()
       }
     )
-    this.hideModal()
+
   }
 }

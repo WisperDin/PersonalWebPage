@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  serveIp:'127.0.0.1:8888'
+  serveIp:'http://127.0.0.1:8888'
 };
