@@ -51,9 +51,23 @@ export class Login {
     }
     this.userService.login(this.username,this.password).subscribe(
       fb=>{
+        if(!fb){
+          console.error('login fb null')
+          return
+        }
+        if(!fb.code){
+          console.error('login fb.code null')
+          return
+        }
+
         //todo 反馈
         if(fb.code==1000){
+          if(!fb.data){
+            console.error('login fb.data null')
+            return
+          }
           //登录成功
+          localStorage.setItem("curUser",fb.data)
           this.hideModal();
           return
         }

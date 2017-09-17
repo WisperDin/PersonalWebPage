@@ -1,0 +1,28 @@
+<div class="container">
+  <div *ngFor="let article of articles">
+    <div class="inner_item">
+      <div class="half_item_content" style="background-color: #eeeeee;text-align: center;line-height:300px;font-size: 50px">
+        {{article.date}}
+      </div>
+
+      <div class="half_item_content">
+        <h2 style="text-align: center">{{article.title}}</h2>
+        <article class="article">
+          {{article.content}}
+        </article>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="inner_item" style="text-align: center">
+
+    <i class="fa fa-plus-square-o fa-5x plus" aria-hidden="true" style="font-size: 200px;opacity: 0.4;margin-top: 50px"></i>
+
+  </div>
+
+
+
+</div>

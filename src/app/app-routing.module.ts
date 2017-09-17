@@ -3,11 +3,18 @@ import { RouterModule, Routes }  from '@angular/router';
 import {PageMain} from "./page-main/main-page";
 import {Login} from "./login/login";
 import {AuthGuard} from "./auth-guard";
+import {PageArticle} from "./page-article/page-article";
 
 
 const appRoutes: Routes = [
-  { path: 'page/home', component: PageMain , canActivate: [AuthGuard],},
-  { path: 'page/login', component: Login},
+  { path: 'page', children:[
+    { path: 'article', component: PageArticle},
+    { path: 'home', component: PageMain , canActivate: [AuthGuard],},
+    { path: 'login', component: Login},
+
+
+  ]},
+
   //{ path: '**', component: PageNotFoundComponent }
 ];
 

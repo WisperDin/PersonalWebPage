@@ -15,13 +15,15 @@ import {Login} from "./login/login";
 import {AuthGuard} from "./auth-guard";
 import {UserService} from "./_services/user.service";
 import {HttpModule} from "@angular/http";
+import {PageArticle} from "./page-article/page-article";
 
 @NgModule({
   declarations: [
     AppComponent,
     PageMain,
     Header,
-    Login
+    Login,
+    PageArticle
   ],
   imports: [
     BrowserModule,
