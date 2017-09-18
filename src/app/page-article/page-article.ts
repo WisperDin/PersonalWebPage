@@ -11,5 +11,31 @@ export class PageArticle {
     {date:"2017-1-5 07:10",title:"Font Awesome",content:"After you get up and running, you can place Font Awesome icons just about anywhere with the i tag. Some examples appreciatively re-used from the Bootstrap documentation."}
   ]
 
+  edited:boolean=false;
+
+  editArticle(){
+    this.edited=true
+  }
+
+  editArticleTheme:string;
+  editArtcleContent:string;
+  addArticle(){
+    if(!this.editArticleTheme){
+      return
+    }
+    if(!this.editArtcleContent){
+      return
+    }
+    this.articles.unshift(
+      {
+        date:Date.now().toString(),
+        title:this.editArticleTheme,
+        content:this.editArtcleContent,
+      },
+    )
+
+    //show plus button
+    this.edited=false;
+  }
 
 }

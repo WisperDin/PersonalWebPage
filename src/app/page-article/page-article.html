@@ -2,7 +2,7 @@
   <div *ngFor="let article of articles">
     <div class="inner_item">
       <div class="half_item_content" style="background-color: #eeeeee;text-align: center;line-height:300px;font-size: 50px">
-        {{article.date}}
+        {{ article.date | date: 'dd/MM/yyyy'}}
       </div>
 
       <div class="half_item_content">
@@ -17,10 +17,26 @@
   </div>
 
 
+
   <div class="inner_item" style="text-align: center">
+    <i *ngIf="!edited" (click)="editArticle()" class="fa fa-plus-square-o fa-5x plus" aria-hidden="true" style="font-size: 200px;opacity: 0.4;margin-top: 50px" ></i>
+    <div *ngIf="edited">
+      <div class="half_item_content" style="background-color: #eeeeee;text-align: center;line-height:300px;font-size: 50px">
+        <button class="btn btn-primary" (click)="addArticle()">Save</button>
+      </div>
 
-    <i class="fa fa-plus-square-o fa-5x plus" aria-hidden="true" style="font-size: 200px;opacity: 0.4;margin-top: 50px"></i>
+      <div class="half_item_content">
+        <div >
+          <input [(ngModel)]="editArticleTheme" placeholder="Theme" class="form-control" style="width: 90%;margin-top: 20px;text-align: center;margin-left: auto;margin-right: auto;">
+        </div>
+        <div>
+          <textarea [(ngModel)]="editArtcleContent" placeholder="Content" class="form-control" style="width: 90%;margin-top: 20px;height: 200px;margin-left: auto;margin-right: auto;">
+            在w3school，你可以找到你所需要的所有的网站建设教程。
+          </textarea>
+        </div>
+      </div>
 
+    </div>
   </div>
 
 
