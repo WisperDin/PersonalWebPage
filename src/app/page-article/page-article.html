@@ -2,11 +2,11 @@
   <div *ngFor="let article of articles">
     <div class="inner_item">
       <div class="half_item_content" style="background-color: #eeeeee;text-align: center;line-height:300px;font-size: 50px">
-        {{ article.date | date: 'dd/MM/yyyy'}}
+        {{ article.createdat | date: 'dd/MM/yyyy'}}
       </div>
 
       <div class="half_item_content">
-        <h2 style="text-align: center">{{article.title}}</h2>
+        <h2 style="text-align: center">{{article.theme}}</h2>
         <article class="article">
           {{article.content}}
         </article>

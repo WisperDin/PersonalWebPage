@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import utils from "../utils/utils";
 import {ArticleService} from "../_services/article.service";
 
+
 @Component({
   selector: 'article-page',
   templateUrl: './page-article.html',
@@ -14,6 +15,12 @@ export class PageArticle implements OnInit{
   }
 
   ngOnInit(){
+    this.refreshArticles()
+  }
+
+  articles=[]
+
+  refreshArticles(){
     let ob = this.articleService.getArticleList()
     if(!ob){
       console.error('ngOnInit getArticleList fail')
@@ -36,18 +43,36 @@ export class PageArticle implements OnInit{
             console.error('getArticleList fb.data null')
             return
           }
+          for (let article of this.articles) {
+            //检查一下
+            if(!article.createdat){
+              console.error('article.createdat null')
+              continue
+            }
+            if(!article.theme){
+              console.error('article.theme null')
+              continue
+            }
+            if(!article.content){
+              console.error('article.content null')
+              continue
+            }
+            try{
+              let tmp:Date = new Date(article.createdat);
+              article.createdat = tmp.toString()
+            }catch(e) {
+              console.error('article.date to string failed'+e.status);
+
+            }
+          }
           this.articles = fb.data
+
           return
         }
         alert('getArticleList Failed');
       }
     )
   }
-
-  articles=[
-    {date:"2017-1-9 15:45",title:"GO源码剖析",content:"golang 并没有使用系统提供的互斥锁,而是在用户空间给予原子操作实现,以便更好地支持并发调度。\n golang 原子操作使用的CAS实现(有关原子的概念,近期我会整理)。golang 标准库sync提供Mutex、RWMutex,使用起来并不复杂,但有几个地方需要注意:1. Mutex可以作为结构体的一部分2. Mutex创建后,以后对Mutex的操作不能复制Mutex,必须实现为pointer-receiver,否则会因复制的关系,导致锁机制失效"},
-    {date:"2017-1-5 07:10",title:"Font Awesome",content:"After you get up and running, you can place Font Awesome icons just about anywhere with the i tag. Some examples appreciatively re-used from the Bootstrap documentation."}
-  ]
 
   edited:boolean=false;
 
@@ -69,17 +94,8 @@ export class PageArticle implements OnInit{
       utils.customAlert(this.alerts,'warning','Content Should Be Not Empty.',1000);
       return
     }
-    this.articles.unshift(
-      {
-        date:Date.now().toString(),
-        title:this.editArticleTheme,
-        content:this.editArtcleContent,
-      },
-    )
 
-    //show plus button
-    this.edited=false;
-
+    //尝试提交文章
     let ob = this.articleService.saveArticle(this.editArticleTheme,this.editArtcleContent,'')
     if(!ob){
       console.error('ngOnInit saveArticle fail')
@@ -98,6 +114,11 @@ export class PageArticle implements OnInit{
         }
         //todo 反馈
         if(fb.code==2000){
+          //刷新文章列表
+          this.refreshArticles()
+
+          //show plus button
+          this.edited=false;
           return
         }
         alert('saveArticle Failed');
