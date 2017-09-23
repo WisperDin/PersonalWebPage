@@ -22,5 +22,12 @@ describe('Utils', () => {
     expect(form).toBe('')
   });
 
+  //将一个结构解析成参数 失败
+  it('customAlert .',() => {
+    let alert:any[]=[]
+    utils.customAlert(alert,'danger',"Sign In Failed")
+    expect('[{"type":"danger","msg":"Sign In Failed","timeout":500}]').toBe(JSON.stringify(alert))
+  });
+
 
 })

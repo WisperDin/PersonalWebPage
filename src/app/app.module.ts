@@ -16,6 +16,7 @@ import {AuthGuard} from "./auth-guard";
 import {UserService} from "./_services/user.service";
 import {HttpModule} from "@angular/http";
 import {PageArticle} from "./page-article/page-article";
+import {ArticleService} from "./_services/article.service";
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {PageArticle} from "./page-article/page-article";
   providers: [
     AuthGuard,
     UserService,
+    ArticleService
   ],
   bootstrap: [AppComponent]
 })

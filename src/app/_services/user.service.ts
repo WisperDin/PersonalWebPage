@@ -14,14 +14,15 @@ export class UserService {
   login(username,password:string){
     if(!username||!password){
       console.error('UserService login param null ')
-      return
+      return null
     }
+
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     return this.http.post(ApiUrl.login,utils.parseParam({
       username:username,
       pwd:password
-    }),{headers})
+    }),{headers:headers,withCredentials: true})
       .map(resp=>resp.json())
   }
 

@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import {UserService} from "../_services/user.service";
+import utils from "../utils/utils";
 
 @Component({
   selector: 'demo-modal-auto-shown',
@@ -29,16 +30,9 @@ export class Login {
   ){
 
   }
-
+  //弹出的错误反馈
   alerts: any = [];
 
-  failAlert(): void {
-    this.alerts.push({
-      type: 'danger',
-      msg: `Sign In Failed`,
-      timeout: 500
-    });
-  }
 
   login(){
     if(!this.username){
@@ -49,7 +43,14 @@ export class Login {
       console.error('login password null')
       return
     }
-    this.userService.login(this.username,this.password).subscribe(
+
+    let ob = this.userService.login(this.username,this.password)
+    if(ob==null){
+      console.error('userService login fail')
+      return
+    }
+
+    ob.subscribe(
       fb=>{
         if(!fb){
           console.error('login fb null')
@@ -67,11 +68,11 @@ export class Login {
             return
           }
           //登录成功
-          localStorage.setItem("curUser",fb.data)
+          localStorage.setItem("user",JSON.stringify(fb.data))
           this.hideModal();
           return
         }
-        this.failAlert()
+        utils.customAlert(this.alerts,'danger','Sign In Failed');
       }
     )
 

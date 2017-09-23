@@ -19,11 +19,24 @@
 
 
   <div class="inner_item" style="text-align: center">
+
+
     <i *ngIf="!edited" (click)="editArticle()" class="fa fa-plus-square-o fa-5x plus" aria-hidden="true" style="font-size: 200px;opacity: 0.4;margin-top: 50px" ></i>
+
+    <div *ngFor="let alert of alerts" style="margin-left: inherit;opacity: 0.8;position: absolute">
+      <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" dismissible="true">{{ alert.msg }}</alert>
+    </div>
+
     <div *ngIf="edited">
-      <div class="half_item_content" style="background-color: #eeeeee;text-align: center;line-height:300px;font-size: 50px">
-        <button class="btn btn-primary" (click)="addArticle()">Save</button>
+      <div>
+
+        <div class="half_item_content" style="background-color: #eeeeee;text-align: center;line-height:300px;font-size: 50px">
+          <button class="btn btn-primary" (click)="addArticle()">Save</button>
+        </div>
       </div>
+
+
+
 
       <div class="half_item_content">
         <div >

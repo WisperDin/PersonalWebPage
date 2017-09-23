@@ -9,6 +9,30 @@ const utils = {
       }
     }
     return pair.join('&')
+  },
+
+  customAlert(alerts:any[],type,msg:string,timeout?:number):void{
+    if(!alerts){
+      console.error('customAlert alerts null')
+      return
+    }
+    if(!type){
+      console.error('customAlert type null')
+      return
+    }
+    if(!msg){
+      console.error('customAlert msg null')
+      return
+    }
+    let Timeout:number=500;
+    if(timeout){
+      Timeout=timeout
+    }
+    alerts.push({
+      type: type,
+      msg: msg,
+      timeout: Timeout
+    });
   }
 };
 
