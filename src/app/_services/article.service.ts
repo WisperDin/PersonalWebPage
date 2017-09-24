@@ -13,7 +13,7 @@ export class ArticleService {
 
 
 
-  getArticleList(){
+  getArticleList(orderType?:string,orderProp?:string){
     let user = JSON.parse(localStorage.getItem('user'))
     if(!user){
       console.error('GetUserInfo user null!')
@@ -23,7 +23,9 @@ export class ArticleService {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     return this.http.get(ApiUrl.getArticle +'?'+ utils.parseParam({
       username:user.username,
-      userid:user.id
+      userid:user.id,
+      orderProp:orderProp,
+      orderType:orderType
     }),{headers:headers,withCredentials: true})
       .map(resp=>resp.json())
   }

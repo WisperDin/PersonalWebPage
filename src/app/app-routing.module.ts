@@ -4,6 +4,7 @@ import {PageMain} from "./page-main/main-page";
 import {Login} from "./login/login";
 import {AuthGuard} from "./auth-guard";
 import {PageArticle} from "./page-article/page-article";
+import {PageMsgBoard} from "./page-msgboard/page-msgboard";
 
 
 const appRoutes: Routes = [
@@ -11,8 +12,7 @@ const appRoutes: Routes = [
     { path: 'article', component: PageArticle},
     { path: 'home', component: PageMain , canActivate: [AuthGuard],},
     { path: 'login', component: Login},
-
-
+    { path: 'msgboard', component: PageMsgBoard},
   ]},
 
   //{ path: '**', component: PageNotFoundComponent }

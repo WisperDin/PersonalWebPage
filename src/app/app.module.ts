@@ -17,6 +17,7 @@ import {UserService} from "./_services/user.service";
 import {HttpModule} from "@angular/http";
 import {PageArticle} from "./page-article/page-article";
 import {ArticleService} from "./_services/article.service";
+import {PageMsgBoard} from "./page-msgboard/page-msgboard";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {ArticleService} from "./_services/article.service";
     PageMain,
     Header,
     Login,
-    PageArticle
+    PageArticle,
+    PageMsgBoard
   ],
   imports: [
     BrowserModule,

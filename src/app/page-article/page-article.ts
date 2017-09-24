@@ -6,7 +6,7 @@ import {ArticleService} from "../_services/article.service";
 @Component({
   selector: 'article-page',
   templateUrl: './page-article.html',
-  styleUrls: ['./page-article.css']
+  styleUrls: ['./page-article.css',"../css/panel.css"]
 })
 export class PageArticle implements OnInit{
 
@@ -21,7 +21,7 @@ export class PageArticle implements OnInit{
   articles=[]
 
   refreshArticles(){
-    let ob = this.articleService.getArticleList()
+    let ob = this.articleService.getArticleList('DESC','createdat')
     if(!ob){
       console.error('ngOnInit getArticleList fail')
       return
@@ -106,13 +106,14 @@ export class PageArticle implements OnInit{
       (fb)=>{
         if(!fb){
           console.error('saveArticle fb null')
+          utils.customAlert(this.alerts,'danger','Article Save Failed',5000);
           return
         }
         if(!fb.code){
           console.error('saveArticle fb.code null')
+          utils.customAlert(this.alerts,'danger','Article Save Failed',5000);
           return
         }
-        //todo 反馈
         if(fb.code==2000){
           //刷新文章列表
           this.refreshArticles()
@@ -121,7 +122,7 @@ export class PageArticle implements OnInit{
           this.edited=false;
           return
         }
-        alert('saveArticle Failed');
+        utils.customAlert(this.alerts,'danger','Article Save Failed',5000);
       }
     )
   }
