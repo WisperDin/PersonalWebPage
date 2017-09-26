@@ -1,5 +1,50 @@
 <div class="container">
+  <div *ngFor="let msg of messages">
+
+    <div class="inner_item">
+      <div class="baseinf">
+        <div class="avatar vert-center" style="background-image: url(../../assets/1.jpg)">
+        </div>
+        <h4 class="vert-center" style="margin-top: 20px;">匿名用户</h4>
+      </div>
+
+      <div class="msgboard" >
+        <div class="half_item_content">
+          <article style="margin: 20px" class="article">
+            {{msg.content}}
+          </article>
+<!--          <div style="height: 10%;background-color: #555555">
+
+          </div>-->
+        </div>
+      </div>
+    </div>
+
+  </div>
 
 
+
+  <div class="inner_item">
+    <div class="baseinf">
+      <div class="avatar vert-center" style="background-image: url(../../assets/1.jpg)">
+      </div>
+      <h4 class="vert-center" style="margin-top: 20px;">匿名用户</h4>
+
+    </div>
+
+    <div class="msgboard" >
+      <textarea [(ngModel)]="editMsgContent"  placeholder="MsgContent" class="form-control textarea" >
+            在w3school，你可以找到你所需要的所有的网站建设教程。
+      </textarea>
+      <div class="toolbtn">
+        <button style="width: 70%"  class="btn btn-primary" (click)="addMsg()" >Save</button>
+        <button style="margin-top: 10px;width: 70%"  class="btn btn-warning" (click)="clear()" >Discard</button>
+      </div>
+      <div *ngFor="let alert of alerts" style="margin-left: inherit;opacity: 0.8;position: absolute">
+        <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" dismissible="true">{{ alert.msg }}</alert>
+      </div>
+
+    </div>
+  </div>
 </div>
 

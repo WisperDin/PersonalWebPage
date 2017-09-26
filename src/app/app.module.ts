@@ -18,6 +18,7 @@ import {HttpModule} from "@angular/http";
 import {PageArticle} from "./page-article/page-article";
 import {ArticleService} from "./_services/article.service";
 import {PageMsgBoard} from "./page-msgboard/page-msgboard";
+import {MsgService} from "./_services/msg.service";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {PageMsgBoard} from "./page-msgboard/page-msgboard";
   providers: [
     AuthGuard,
     UserService,
-    ArticleService
+    ArticleService,
+    MsgService
   ],
   bootstrap: [AppComponent]
 })
