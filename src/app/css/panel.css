@@ -33,6 +33,6 @@
 .half_item_content{
   float: left;
   width: 50%;
-
   height: 100%;
+  overflow:auto;
 }

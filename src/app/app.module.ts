@@ -19,6 +19,8 @@ import {PageArticle} from "./page-article/page-article";
 import {ArticleService} from "./_services/article.service";
 import {PageMsgBoard} from "./page-msgboard/page-msgboard";
 import {MsgService} from "./_services/msg.service";
+import {AlertService} from "./_services/alert.service";
+import {GlobalAlerts} from "./global-alerts/global-alerts";
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import {MsgService} from "./_services/msg.service";
     Header,
     Login,
     PageArticle,
-    PageMsgBoard
+    PageMsgBoard,
+    GlobalAlerts
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import {MsgService} from "./_services/msg.service";
     AuthGuard,
     UserService,
     ArticleService,
-    MsgService
+    MsgService,
+    AlertService
   ],
   bootstrap: [AppComponent]
 })

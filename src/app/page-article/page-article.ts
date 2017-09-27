@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import utils from "../utils/utils";
 import {ArticleService} from "../_services/article.service";
+import {AlertService} from "../_services/alert.service";
 
 
 @Component({
@@ -10,7 +11,10 @@ import {ArticleService} from "../_services/article.service";
 })
 export class PageArticle implements OnInit{
 
-  constructor(private articleService:ArticleService){
+  constructor(
+    private articleService:ArticleService,
+    private alertService:AlertService
+  ){
 
   }
 
@@ -20,10 +24,16 @@ export class PageArticle implements OnInit{
 
   articles=[]
 
+  //控制是否显示添加文章卡片
+  hasLogin:boolean=false;
+
   refreshArticles(){
     let ob = this.articleService.getArticleList('DESC','createdat')
     if(!ob){
-      console.error('ngOnInit getArticleList fail')
+      //hasn't login
+      //todo...反馈
+      console.warn('refreshArticles ob null')
+      this.hasLogin = false
       return
     }
 
@@ -66,9 +76,11 @@ export class PageArticle implements OnInit{
             }
           }
           this.articles = fb.data
+          this.hasLogin = true
 
           return
         }
+        this.alertService.error('加载文章失败',1000)
         alert('getArticleList Failed');
       }
     )

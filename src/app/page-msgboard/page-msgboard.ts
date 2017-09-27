@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ArticleService} from "../_services/article.service";
 import {MsgService} from "../_services/msg.service";
 import utils from "../utils/utils";
+import {AlertService} from "../_services/alert.service";
 
 @Component({
   selector: 'msgboard-page',
@@ -16,9 +17,13 @@ export class PageMsgBoard implements OnInit{
   //弹出警告
   alerts:any[] = []
 
-  constructor(private msgService:MsgService){}
+  constructor(
+    private msgService:MsgService,
+    private alertService:AlertService
+  ){}
 
   ngOnInit(){
+
     this.refreshMsgs()
   }
 
@@ -65,13 +70,16 @@ export class PageMsgBoard implements OnInit{
           this.messages = fb.data
           return
         }
-        alert('getArticleList Failed');
+        //3005表示无消息
+        if(fb.code!=3005){
+          this.alertService.error('加载留言板失败',1000)
+        }
       }
     )
   }
 
   messages:any[] = [
-    {content:'噢,我的上帝,我发誓这是我见过的最好的网站'}
+
   ]
 
   addMsg(){
