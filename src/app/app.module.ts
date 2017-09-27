@@ -21,6 +21,7 @@ import {PageMsgBoard} from "./page-msgboard/page-msgboard";
 import {MsgService} from "./_services/msg.service";
 import {AlertService} from "./_services/alert.service";
 import {GlobalAlerts} from "./global-alerts/global-alerts";
+import {PageLabPV} from "./page-lab-pvoper/page-lab-pv";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {GlobalAlerts} from "./global-alerts/global-alerts";
     Login,
     PageArticle,
     PageMsgBoard,
-    GlobalAlerts
+    GlobalAlerts,
+    PageLabPV
   ],
   imports: [
     BrowserModule,

@@ -14,9 +14,10 @@ export class Header {
     tabNum:number = 4
     jumpUrl:any[] = [
       {url:'/page/home'},
-      {url:''},
+      {url:'/page/lab'},
       {url:''},
       {url:'/page/msgboard'},
+      
     ]
 
     tabflag:number=0
